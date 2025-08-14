@@ -80,4 +80,40 @@ flowchart LR
   %% Offboard sources (dashed)
   Sim["MATLAB/Simulink & XFLR5"] -. "models/params" .-> Control
   Tuning["Ground Tuning<br/>(knobs/switches)"] --> RC
+```
+
+## Plots & Data
+
+- **Data sample:** `data/sample.csv` (tiny, anonymized log—timestamps + attitude/rates).
+- **Plot:** `plots/pitch_vs_time.png` (deg vs s).
+
+<img src="plots/pitch_vs_time.png" alt="Pitch vs Time – bench/taxi stabilization" width="700">
+
+*Plot hygiene:* one curve, labeled axes, units in ° and s.
+
+## Code Snippet
+
+See `/snippets/state_machine.cpp` — a compact state-machine skeleton with:
+- RC override & arming/failsafe gate  
+- Throttle/elevator timed ramps  
+- PD pitch hold and cruise hold example
+
+## What’s Next
+- Add airspeed sensing (Pitot or inferred) and tune gains/gain scheduling.
+- Cruise hold and cleaner phase transitions (climb → cruise).
+- Logging polish (file rotation, timestamps, selected signals) and simple plotting notebook.
+- Hardware: gear alignment, motor-mount reinforcement, wire strain relief.
+
+## Repo Structure
+.
+├─ README.md
+├─ /media            # photos & diagrams (PNG/JPG)
+├─ /plots            # 1–2 figures (PNG)
+├─ /data
+│   └─ sample.csv    # tiny log snippet
+├─ /snippets
+│   └─ state_machine.cpp
+├─ /docs             # optional notes
+├─ LICENSE           # MIT (recommended)
+└─ .gitignore        # Arduino/CAD patterns
 
