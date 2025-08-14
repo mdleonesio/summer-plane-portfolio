@@ -17,7 +17,7 @@
 | Timeframe | May–Aug 2025 • Solo |
 | Airframe | Foamboard + basswood; tricycle gear; ~30″ fuselage, ~40″ wingspan |
 | Objective | Stabilized flight testbed for future autonomy |
-| Control Architecture | IMU + RC receiver → control laws → mixer/override → servos/ESC |
+| Control Architecture | IMU + RC receiver → control laws (PD/PID + state machine) → mixer/override → servos/ESC |
 | Data | On-board logging (attitude + rates); MATLAB/Simulink SITL checks |
 | Test Flow | Bench → Taxi → Flight; liftoff + short controlled segments |
 | Toolchain | SolidWorks, Excel, Arduino IDE/C++, XFLR5, MATLAB/Simulink |
@@ -46,7 +46,7 @@
 
 ```mermaid
 flowchart LR
-  subgraph Onboard_System
+  subgraph Onboard System
     IMU["IMU<br/>(attitude & rates)"]
     RC["RC Receiver<br/>(sticks, switches, knobs)"]
     Control["Control Laws<br/>(PD/PID + State Machine)"]
@@ -75,6 +75,10 @@ flowchart LR
   Sim["MATLAB/Simulink & XFLR5"] -. "models/params" .-> Control
   Tuning["Ground Tuning<br/>(knobs/switches)"] --> RC
 ```
+**Behavior notes**
+- **Arming / Failsafe:** arms only after a short delay with throttle low and a good radio link; any disarm or radio loss cuts the throttle.
+- **State machine:** modes are switch-driven (easy to drop back to MANUAL). Typical flow: IDLE → throttle ramp → elevator ramp → climb → cruise.
+- **Override & Mixer:** in MANUAL, RC goes straight through. In some AUTO modes I blend manual input with the autopilot command and enforce trims/limits before sending PWM to the servos/ESC.
 
 ## Plots & Data
 
