@@ -23,11 +23,30 @@
 | Toolchain | SolidWorks, Excel, Arduino IDE/C++, XFLR5/XFOIL, MATLAB/Simulink |
 
 ## Media
+
 <img src="media/airframe_front.jpg" alt="Assembled airframe front view" width="700">
-<img src="media/airframe_topdown.jpg" alt="Top-down layout" width="700">
-<img src="media/avionics_close.jpg" alt="Avionics close-up" width="700">
-<img src="media/gear_alignment.jpg" alt="Landing gear mount" width="700">
+
+**Airframe:** constant-chord foamboard wing; tricycle gear near CG for clean rotation and easy repair.
+
+<img src="media/airframe_topdown.jpg" alt="Top-down layout of fuselage and avionics bay" width="700">
+
+**Layout:** battery forward; removable avionics tray mid-bay; simple structure to speed iterations.
+
+<img src="media/avionics_close.jpg" alt="Avionics shelf close-up" width="700">
+
+**Avionics:** microcontroller + IMU → control laws → RC override; on-board logging; removable skewer rails.
+
 <img src="media/cad_isometric.png" alt="Representative CAD isometric" width="700">
+
+**CAD:** representative model used for sizing/mounts; the final build iterated from this geometry.
+
+<details>
+  <summary>More photos</summary>
+
+  <img src="media/airframe_topdown_covered.jpg" alt="Top-down with wing installed" width="600">
+
+</details>
+
 
 ## Architecture
 
