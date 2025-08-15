@@ -1,10 +1,10 @@
 # Autonomous RC Airplane — Scratch-Built (Solo)
 
-**Summary:** I designed and built an autonomous RC airplane from scratch-airframe, avionics, and control code—through bench/taxi tests and a few short flights, got basic stabilization working.
+**Summary:** I designed and built an autonomous RC airplane from scratch, airframe, avionics, and control code, through bench/taxi tests and a few short flights, got basic stabilization working.
 
 **Goal** — Build a reusable RC platform/system for autonomy.
 
-**Approach** — Simple foamboard airframe with onboard control logic and SD-card logging. Signal flow: IMU + RC receiver → control laws on the microcontroller → mixer/override → servos/ESC. Tested and iterated using software-in-the-loop (SITL) and hardware-in-the-loop (HITL).
+**Approach** — Simple foamboard airframe with onboard control logic and SD-card logging. Signal flow: IMU + RC receiver → control laws on the microcontroller → mixer/override → servos/ESC. Tested and iterated using software-in-the-loop (SITL) and hardware-in-the-loop (HIL).
 
 **Results** — Achieved liftoff and short controlled segments, validated the stabilization code, and created a platform for tuning and future iterations.
 
@@ -82,7 +82,7 @@ flowchart LR
 
 ## Data Table Sample
 Logging is implemented. See `data/sample.csv` for a short capture during **THROTTLE_RAMP**.  
-Columns: `Time_ms, Phase, Pitch (deg), PitchRate (deg/s), Elevator (µs), Yaw (deg), YawRate (deg/s), Rudder (µs), Throttle (µs)`.
+Columns: `Time_ms, Phase, Pitch (deg), PitchRate (deg/s), Elevator cmd, Yaw (deg), YawRate (deg/s), Rudder cmd, Throttle (µs)`.
 
 ## Wiring Overview
 <img src="media/wiring_overview.png" alt="Teensy 4.1 + BNO055 + iBUS + servos/ESC wiring" width="900">
