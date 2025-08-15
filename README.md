@@ -80,9 +80,9 @@ flowchart LR
 - **State machine:** modes are switch-driven (easy to drop back to MANUAL). Typical flow: IDLE → throttle ramp → elevator ramp → climb → cruise.
 - **Override & Mixer:** in MANUAL, RC goes straight through. In some AUTO modes I blend manual input with the autopilot command and enforce trims/limits before sending PWM to the servos/ESC.
 
-## Data Sample
-
-- **Data sample:** `data/sample.csv` (tiny, anonymized log—timestamps + attitude/rates).
+## Data (no plots)
+Logging is implemented. See `data/sample.csv` for a short capture during **THROTTLE_RAMP**.  
+Columns: `Time_ms, Phase, Pitch (deg), PitchRate (deg/s), Elevator (µs), Yaw (deg), YawRate (deg/s), Rudder (µs), Throttle (µs)`.
 
 ## Code Snippet
 
