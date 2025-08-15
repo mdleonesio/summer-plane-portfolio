@@ -80,16 +80,14 @@ flowchart LR
 - **State machine:** modes are switch-driven (easy to drop back to MANUAL). Typical flow: IDLE → throttle ramp → elevator ramp → climb → cruise.
 - **Override & Mixer:** in MANUAL, RC goes straight through. In some AUTO modes I blend manual input with the autopilot command and enforce trims/limits before sending PWM to the servos/ESC.
 
-## Data (no plots)
+## Data Table Sample
 Logging is implemented. See `data/sample.csv` for a short capture during **THROTTLE_RAMP**.  
 Columns: `Time_ms, Phase, Pitch (deg), PitchRate (deg/s), Elevator (µs), Yaw (deg), YawRate (deg/s), Rudder (µs), Throttle (µs)`.
 
-## Code Snippet
+## Code
+All firmware lives in **/firmware**. It’s Arduino C++ for a Teensy 4.1 with a BNO055 IMU and iBus RC.  
+Build notes and library list are in `/firmware/README.md`.
 
-See `/snippets/state_machine.cpp` — a compact state-machine skeleton with:
-- RC override & arming/failsafe gate  
-- Throttle/elevator timed ramps  
-- PD pitch hold and cruise hold example
 
 ## What’s Next
 - Add airspeed sensing (Pitot or inferred) and tune gains/gain scheduling.
