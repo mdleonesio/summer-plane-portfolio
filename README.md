@@ -84,6 +84,15 @@ flowchart LR
 Logging is implemented. See `data/sample.csv` for a short capture during **THROTTLE_RAMP**.  
 Columns: `Time_ms, Phase, Pitch (deg), PitchRate (deg/s), Elevator (µs), Yaw (deg), YawRate (deg/s), Rudder (µs), Throttle (µs)`.
 
+## Wiring Overview
+<img src="media/wiring_overview.png" alt="Teensy 4.1 + BNO055 + iBUS + servos/ESC wiring" width="900">
+
+**Power rails:** ESC BEC provides **+5V_BEC** to the receiver, servos, and Teensy VIN; the IMU is powered from the Teensy **3.3 V** rail. All grounds common.
+
+**Signals:** `PWM_EL → pin 6`, `PWM_AIL → 7`, `PWM_RUD → 8`, `PWM_TH → 9`, `SDA/SCL → 18/19`, `iBUS → (divider) → RX1`.
+
+**Safety notes:** Teensy I/O is **3.3 V only** → divide iBUS to ~3.1 V; servos pull power from **+5V_BEC** (Teensy pins are signal only); avoid powering VIN and USB at the same time.
+
 ## Code
 All firmware lives in **/firmware**. It’s Arduino C++ for a Teensy 4.1 with a BNO055 IMU and iBus RC.  
 Build notes and library list are in `/firmware/README.md`.
