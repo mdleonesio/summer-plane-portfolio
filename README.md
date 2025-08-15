@@ -89,9 +89,20 @@ Columns: `Time_ms, Phase, Pitch (deg), PitchRate (deg/s), Elevator (µs), Yaw (d
 
 **Power rails:** ESC BEC provides **+5V_BEC** to the receiver, servos, and Teensy VIN; the IMU is powered from the Teensy **3.3 V** rail. All grounds common.
 
-**Signals:** `PWM_EL → pin 6`, `PWM_AIL → 7`, `PWM_RUD → 8`, `PWM_TH → 9`, `SDA/SCL → 18/19`, `iBUS → (divider) → RX1`.
+**Signals:** `PWM_EL → pin 6`, `PWM_AIL → 7`, `PWM_RUD → 8`, `PWM_TH → 9`, `SDA/SCL → 18/19`, `iBUS → RX1`.
 
-**Safety notes:** Teensy I/O is **3.3 V only** → divide iBUS to ~3.1 V; servos pull power from **+5V_BEC** (Teensy pins are signal only); avoid powering VIN and USB at the same time.
+**Safety notes:** Avoid powering system from usb and battery at the same time
+
+| Function            | Teensy pin | Connector pin      | Net      |
+|---|---:|---|---|
+| Elevator signal     | 6          | SERVO_ELEVATOR.1   | PWM_EL   |
+| Aileron signal      | 7          | SERVO_AILERON.1    | PWM_AIL  |
+| Rudder signal       | 8          | SERVO_RUDDER.1     | PWM_RUD  |
+| ESC throttle signal | 9          | ESC_THROTTLE.1     | PWM_TH   |
+| Receiver iBUS → RX1 | 0 (RX1)    | RECEIVER.1         | RX1      |
+| I²C SDA / SCL       | 18 / 19    | BNO055 SDA / SCL    | SDA/SCL  |
+| Power rails         | VIN / 3.3V  | +5V_BEC / 3.3V     | +5V_BEC / 3.3V |
+
 
 ## Code
 All firmware lives in **/firmware**. It’s Arduino C++ for a Teensy 4.1 with a BNO055 IMU and iBus RC.  
