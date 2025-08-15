@@ -20,7 +20,7 @@
 | Control Architecture | IMU + RC receiver → control laws (PD/PID + state machine) → mixer/override → servos/ESC |
 | Data | On-board logging (attitude + rates); MATLAB/Simulink SITL checks |
 | Test Flow | Bench → Taxi → Flight; liftoff + short controlled segments |
-| Toolchain | SolidWorks, Excel, Arduino IDE/C++, XFLR5, MATLAB/Simulink |
+| Toolchain | Excel, SolidWorks, XFLR5, MATLAB/Simulink, Arduino IDE/C++ |
 
 ## Media
 
