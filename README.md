@@ -80,14 +80,9 @@ flowchart LR
 - **State machine:** modes are switch-driven (easy to drop back to MANUAL). Typical flow: IDLE → throttle ramp → elevator ramp → climb → cruise.
 - **Override & Mixer:** in MANUAL, RC goes straight through. In some AUTO modes I blend manual input with the autopilot command and enforce trims/limits before sending PWM to the servos/ESC.
 
-## Plots & Data
+## Data Sample
 
 - **Data sample:** `data/sample.csv` (tiny, anonymized log—timestamps + attitude/rates).
-- **Plot:** `plots/pitch_vs_time.png` (deg vs s).
-
-<img src="plots/pitch_vs_time.png" alt="Pitch vs Time – bench/taxi stabilization" width="700">
-
-*Plot hygiene:* one curve, labeled axes, units in ° and s.
 
 ## Code Snippet
 
